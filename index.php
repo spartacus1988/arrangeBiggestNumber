@@ -1,18 +1,4 @@
 <?php
-	if (!empty($_SERVER['HTTPS']) && ('on' == $_SERVER['HTTPS'])) {
-		$uri = 'https://';
-	} else {
-		$uri = 'http://';
-	}
-	$uri .= $_SERVER['HTTP_HOST'];
-	//header('Location: '.$uri.'/dashboard/');
-
-	//echo "Hello";
-	//echo "<br>";
-
-
-
-
 function arrangeBiggestNumber($arr)
 {
 	for($i=0;$i<count($arr)-1;$i++)
@@ -65,7 +51,6 @@ function getDigmass($number)
 
 function getMinLenght($firstLenght, $secondLenght) 
 {
-
 	if($firstLenght > $secondLenght)
 	{
 		return $secondLenght;
@@ -85,7 +70,6 @@ function getMinLenght($firstLenght, $secondLenght)
 
 function getShorterNumber($firstNumber, $secondNumber) 
 {
-
 	$firstLenght = getLength($firstNumber);
 	$secondLenght = getLength($secondNumber);
 
@@ -134,59 +118,62 @@ function compareTwoNumber($firstNumber, $secondNumber)
   	return $shorterNumber;
 }
 
-function My_arrangeBiggestNumber($arr)
+
+function delElemMass($arr, $selected_val)
 {
-	//определяем самое большое число с минимальными количеством разрядов
-	$selected_val = $arr[0];
-	foreach ($arr as &$value) 
-	{
-		$selected_val = compareTwoNumber($selected_val, $value);
-	}
-
-	//$selected_val = compareTwoNumber(678453457, 67838);
-	print_r($selected_val);
-	echo "<br>";
-	unset($value);
-
-
-	print_r($arr);
-	echo "<br>";
-
-
 	$value_to_delete = $selected_val;
 	$arr = array_flip($arr);
 	unset ($arr[$value_to_delete]);
 	$arr = array_flip($arr);
-	
-	print_r($arr);
-	echo "<br>";
+	return $arr;
+}
 
 
-	$array = array ('фигня' , 'ботва' , 'ерунда') ; //Массив для примера
- 
-	$value_to_delete = 'фигня' ; //Элемент с этим значением нужно удалить
-	$array = array_flip($array); //Меняем местами ключи и значения
-	unset ($array[$value_to_delete]) ; //Удаляем элемент массива
-	$array = array_flip($array); //Меняем местами ключи и значения
- 
-	print_r ($array) ; //Распечатываем массив
+function My_arrangeBiggestNumber($arr)
+{
+	$concat_value = "";
+	while(!empty($arr))
+	{
+
+		//определяем самое большое число с минимальными количеством разрядов
+		$selected_val = $arr[0];
+		foreach ($arr as &$value) 
+		{
+			$selected_val = compareTwoNumber($selected_val, $value);
+		}
+
+		//$selected_val = compareTwoNumber(678453457, 67838);
+		print_r($selected_val);
+		echo "<br>";
+		unset($value);
+
+		$concat_value = $concat_value . $selected_val;
+
+		print_r($arr);
+		echo "<br>";
+
+		$arr = delElemMass($arr, $selected_val);
+
+		print_r($arr);
+		echo "<br>";
+	}
+
+	echo "Result value is: ";
+	print_r($concat_value);
 	echo "<br>";
 
 }
 
 
-//echo "arrangeBiggestNumber of array [1, 34, 3, 98, 9, 76, 45, 4] is ";
-//echo "<br>";
-//print_r(arrangeBiggestNumber([1, 34, 3, 98, 9, 76, 45, 4]));
+echo "arrangeBiggestNumber of array [1, 34, 3, 98, 9, 76, 45, 4] is ";
+echo "<br>";
+print_r(arrangeBiggestNumber([1, 34, 3, 98, 9, 76, 45, 4]));
+echo "<br>";
 
 
 My_arrangeBiggestNumber([1, 34, 3, 98, 9, 76, 45, 4]);
 
 
-
-
-//exit;
-//Something is wrong with the XAMPP installation :-(
 ?>
 
 
