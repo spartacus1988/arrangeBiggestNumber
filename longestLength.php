@@ -1,10 +1,30 @@
 <?php
 
-function My_longestLength($str )
+function maxLength($array) 
 {
+	$maxLength = null;
+	$maxLengthIndex = null;
+
+	foreach ($array as $index => $value) 
+	{
+  		$length = strlen($value);
+  		if (is_null($maxLength) || $length > $maxLength) 
+  		{
+    		$maxLength = $length;
+    		$maxLengthIndex = $index;
+  		}
+	}
+	echo 'Самая длинная строка "' . $array[$maxLengthIndex] . '" под номером ' . $maxLengthIndex . '.';
+	return $array[$maxLengthIndex];
+}
 
 
-	//$chars = preg_split('//', $str, -1, PREG_SPLIT_NO_EMPTY);
+
+
+
+
+function My_longestLength($str)
+{
 	$chars = str_split($str);
 	print_r($chars);
 	echo "<br>";
@@ -13,57 +33,30 @@ function My_longestLength($str )
 	print_r($unique_chars);
 	echo "<br>";
 
-
-	//$array1 = array("a" => "green", "b" => "brown", "c" => "blue", "red");
-	//$array2 = array("a" => "green", "yellow", "red");
 	$result_diff = array_diff_assoc($chars, $unique_chars);
 	print_r($result_diff);
 	echo "<br>";
-
 
 	$r = array();
 	$prev_key = 0;
 	foreach ( $result_diff as $key => $value ) 
 	{
-	  echo  "key " . $key . "<br>";
-	  echo  "value " . $value . "<br>";
+	  	echo  "key " . $key . "<br>";
+	 	echo  "value " . $value . "<br>";
 
 
-	  	$output = array_slice($chars, $prev_key, $key); 
+	  	$output = array_slice($chars, $prev_key, $key-$prev_key); 
 	  	print_r($output);
-		echo "<br>";
+	  	echo "<br>";
 
-		$implode_str = implode("", $output);
+	  	$implode_str = implode("", $output);
 		print_r($implode_str);
 		echo "<br>";
 
 		$r[] = $implode_str;
 
-
 		$prev_key = $key;
-
-
-	 //  	$r = array();
-		// while ($chars_val = current($chars)) 
-		// {
-  //   		//if ($chars_val == 'apple') 
-  //   		//{
-  //       	//	echo key($chars).'<br />';
-  //   		//}
-
-
-		// 	if(key($chars) == $key)
-		// 	{
-		// 		break;
-		// 	}
-
-
-  //   		next($chars);
-		// }
-	
-
 	}
-
 
 	$last_substr = array_slice($chars, $prev_key); 
 	print_r($last_substr);
@@ -78,49 +71,45 @@ function My_longestLength($str )
 	print_r($r);
 	echo "<br>";
 
+	$prev_value = "";
+	foreach ( $r as &$value ) 
+	{
+		$temp_substr = substr($value, 1); 
+		print_r($temp_substr);
+		echo "<br>"; 
 
+		if((strlen($prev_value) > 0) && (substr($prev_value, -1) !== substr($value, 0, 1)   ))
+		{
 
+			echo "last_sym_prev_value " . substr($prev_value, -1) . "<br>";
+			echo "first_sym_value " . substr($value, 0, 1)  . "<br>";
 
+			$value = $prev_value . $value;
+		}
+		$prev_value = $temp_substr;
+	}
 
+	print_r($r);
+	echo "<br>";
 
+	$maxLengthString = maxLength($r);
+	print_r($maxLengthString);
+	echo "<br>";
 
-
-	// foreach ($unique_chars as $u_value)
-	// {
- //    	echo "Значение: " . $u_value . "<br>";
-	// }
-
-
-	// $mystring = 'abc';
-	// $findme   = 'a';
-	// $pos = strpos($mystring, $findme);
-
-	
-	// if ($pos === false) {
- //    	echo "The string '$findme' was not found in the string '$mystring'";
-	// } else {
- //    	echo "The string '$findme' was found in the string '$mystring'";
- //    	echo " and exists at position " . $pos;
-	// }
-
-
-	// foreach ($chars as $value)
-	// {
- //    	//echo "Значение: " . $value . "<br>";
-
- //    	$pos = strpos($str, $value);
- //    	echo "The string " . $value . " was found in the string " . $str . " on pos " . $pos . "<br>";
-
-
-	// }
-
-
-
+	return strlen($maxLengthString);
 }
 
 
-	echo "longestLength of string qweqrty is";
+	//$input_str = "qweqrtyquiopazzzzzsdfghjklqqx";
+	//$input_str = "qweqrtyquiopasdfghjklqqx";
+	//$input_str = "qweqrtyquiop";
+	$input_str = "qweqrty";
+	//$input_str = "abcdeef";
+	//$input_str = "jabjcdel";
+
+
+	echo "longestLength of string ".$input_str." is";
 	echo "<br>";
-	My_longestLength("qweqrty");
+	print_r(My_longestLength($input_str));
 
 ?>
