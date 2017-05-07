@@ -117,7 +117,7 @@ function compareTwoNumber($firstNumber, $secondNumber)
 	$lenght = getMinLenght($firstLenght, $secondLenght);
 
 	// поразрядное сравнение
-	for ($i = 0; $i <= $lenght; $i++)  
+	for ($i = 0; $i < $lenght; $i++)  
   	{
     	if($firstMass[$i] > $secondMass[$i])
 		{
@@ -137,25 +137,41 @@ function compareTwoNumber($firstNumber, $secondNumber)
 function My_arrangeBiggestNumber($arr)
 {
 	//определяем самое большое число с минимальными количеством разрядов
-	$temp_value_prev = $arr[0];
-	$temp_lenght_prev = getLength($arr[0]);
 	$selected_val = $arr[0];
 	foreach ($arr as &$value) 
 	{
-		$temp_value = $value;
-		$temp_lenght = getLength($value);
-		
-		//if()
-
-		//print_r(getDigmass($value));
-
-   	
-   		
-   		$temp_value_prev = $value;
-		$temp_lenght_prev = getLength($value);
-
+		$selected_val = compareTwoNumber($selected_val, $value);
 	}
+
+	//$selected_val = compareTwoNumber(678453457, 67838);
+	print_r($selected_val);
+	echo "<br>";
 	unset($value);
+
+
+	print_r($arr);
+	echo "<br>";
+
+
+	$value_to_delete = $selected_val;
+	$arr = array_flip($arr);
+	unset ($arr[$value_to_delete]);
+	$arr = array_flip($arr);
+	
+	print_r($arr);
+	echo "<br>";
+
+
+	$array = array ('фигня' , 'ботва' , 'ерунда') ; //Массив для примера
+ 
+	$value_to_delete = 'фигня' ; //Элемент с этим значением нужно удалить
+	$array = array_flip($array); //Меняем местами ключи и значения
+	unset ($array[$value_to_delete]) ; //Удаляем элемент массива
+	$array = array_flip($array); //Меняем местами ключи и значения
+ 
+	print_r ($array) ; //Распечатываем массив
+	echo "<br>";
+
 }
 
 
