@@ -1,40 +1,26 @@
 <?php
 
-
 function checkConcatTwoNumber($firstNumber, $secondNumber)
 {
 	$delta = $secondNumber - $firstNumber;
-
 	if($delta == 1)
 	{
 		return $secondNumber;
 	}
-
 	return false;
 }
 
-
 function My_summaryRanges($arr)
 {
-	
 	$arr_result = array();
-
 	$counter = count($arr);
-
 	$start_val = false;
 
 	sort($arr);
-	while (list($key, $val) = each($arr)) 
-	{
-    	echo "arr[" . $key . "] = " . $val;
-    	echo "<br>";
-	}
-
 
 	while($counter--)
 	{
 		$direct_counter = count($arr) - $counter -1;
-		//print_r($direct_counter);
 		$next_counter_elem = $direct_counter + 1;
 		if($next_counter_elem > count($arr) - 1)
 		{
@@ -61,19 +47,8 @@ function My_summaryRanges($arr)
 
 			if($start_val !== false)
 			{
-				echo "start_val " . $start_val  . " end_value " . $end_value;
-				echo "<br>";
-			}
-
-
-
-
-			if($start_val !== false)
-			{
-				echo "some bag";
 				array_push($arr_result, $start_val . "->" . $end_value);
 			}
-
 
 			$start_val = false;
 		}
