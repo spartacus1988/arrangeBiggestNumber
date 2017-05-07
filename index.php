@@ -91,31 +91,49 @@ function getShorterNumber($firstNumber, $secondNumber)
 
 function compareTwoNumber($firstNumber, $secondNumber)
 {
-	$firstMass = getDigmass($firstNumber);
-	$secondMass = getDigmass($secondNumber);
+	$xy = $firstNumber . $secondNumber;
+	$yx = $secondNumber . $firstNumber;
 
-	$firstLenght = getLength($firstNumber);
-	$secondLenght = getLength($secondNumber);
+	if($xy < $yx)
+	{
+		return $secondNumber;
+	}
+
+	if($xy > $yx)
+	{
+		return $firstNumber;
+	}
+
+	if($xy == $yx)
+	{
+		return $firstNumber;
+	}
+
+	// $firstMass = getDigmass($firstNumber);
+	// $secondMass = getDigmass($secondNumber);
+
+	// $firstLenght = getLength($firstNumber);
+	// $secondLenght = getLength($secondNumber);
 	
 
-	$lenght = getMinLenght($firstLenght, $secondLenght);
+	// $lenght = getMinLenght($firstLenght, $secondLenght);
 
-	// поразрядное сравнение
-	for ($i = 0; $i < $lenght; $i++)  
-  	{
-    	if($firstMass[$i] > $secondMass[$i])
-		{
-			return $firstNumber;
-		}
+	// // поразрядное сравнение
+	// for ($i = 0; $i < $lenght; $i++)  
+ //  	{
+ //    	if($firstMass[$i] > $secondMass[$i])
+	// 	{
+	// 		return $firstNumber;
+	// 	}
 
-    	if($firstMass[$i] < $secondMass[$i])
-		{
-			return $secondNumber;
-		}
-  	}
+ //    	if($firstMass[$i] < $secondMass[$i])
+	// 	{
+	// 		return $secondNumber;
+	// 	}
+ //  	}
 
-  	$shorterNumber = getShorterNumber($firstNumber, $secondNumber);
-  	return $shorterNumber;
+ //  	$shorterNumber = getShorterNumber($firstNumber, $secondNumber);
+ //  	return $shorterNumber;
 }
 
 
@@ -153,6 +171,7 @@ function My_arrangeBiggestNumber($arr)
 		echo "<br>";
 
 		$arr = delElemMass($arr, $selected_val);
+		$arr = array_values($arr);
 
 		print_r($arr);
 		echo "<br>";
