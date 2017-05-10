@@ -16,7 +16,11 @@ function My_summaryRanges($arr)
 	$counter = count($arr);
 	$start_val = false;
 
-	sort($arr);
+	//sort($arr);
+
+	echo "sorted arr is: ";
+	print_r($arr);
+	echo "<br>";
 
 	while($counter--)
 	{
@@ -29,6 +33,10 @@ function My_summaryRanges($arr)
 
 
 		$selected_val = checkConcatTwoNumber($arr[$direct_counter], $arr[$next_counter_elem]);
+
+		echo "selected_val is: ";
+		print_r($selected_val);
+		echo "<br>";
 		
 		if($selected_val)
 		{
@@ -61,9 +69,15 @@ function My_summaryRanges($arr)
 
 }
 
-echo "summaryRanges of array [0, 1, 2, 4, 5, 7] ";
+//echo "summaryRanges of array [0, 1, 2, 4, 5, 7] ";
+//echo "summaryRanges of array [1, 2, 3, 4, 7, 8, 9, 0, 1, 2] ";
+//echo "summaryRanges of array [0, 1, 2, 0, 1, 2] ";
+echo "summaryRanges of array [8, 7, 6, 5, 1, 2] ";
 echo "<br>";
-My_summaryRanges([0, 1, 2, 4, 5, 7]);
+//My_summaryRanges([0, 1, 2, 4, 5, 7]);
+//My_summaryRanges([1, 2, 3, 4, 7, 8, 9, 0, 1, 2]);
+//My_summaryRanges([0, 1, 2, 0, 1, 2]);
+My_summaryRanges([8, 7, 6, 5, 1, 2]);
 
 ?>
 
