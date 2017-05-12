@@ -1,0 +1,72 @@
+<div class="simple-collapse">
+    <a href="#simple-collapse" class="collapse-control">Control</a>
+    <div class="collapse-content" hidden>Content</div>
+</div>
+
+<div class="complex-collapse">
+    <a href="#complex-collapse" class="collapse-control">Control</a>
+    <div class="collapse-content-other" hidden>Other Content</div>
+</div>
+
+
+<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script> -->
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+<script type="text/javascript">
+
+	class SimpleCollapse 
+	{   
+	      constructor(selector) {
+	        this.elem = document.querySelector(selector);
+	      }
+	       
+	      init() {
+	        this.elem.querySelector('a').onclick = this.toggleContent.bind(this);
+	      }
+      
+	      toggleContent() {
+	        this.elem.querySelector('.collapse-content').hidden = !this.elem.querySelector('.collapse-content').hidden;
+	      }       
+	}
+
+    var obSimpleCollapse = new SimpleCollapse(".simple-collapse");  
+
+	console.log(obSimpleCollapse);
+
+    obSimpleCollapse.init();
+
+
+
+	var ComplexCollapse = new SimpleCollapse(".complex-collapse");
+
+	console.log(ComplexCollapse);
+
+ //    var inheritsFrom = function (child, parent) {
+ //    child.prototype = Object.create(parent.prototype);
+	// };
+
+
+
+	// class ComplexCollapse 
+	// {   
+	          
+	// }
+
+	//var ComplexCollapse = new SimpleCollapse(".complex-collapse");
+	//inheritsFrom(ComplexCollapse, SimpleCollapse);
+
+	ComplexCollapse.toggleContent = function() {
+    //SimpleCollapse.prototype.toggleContent.call(this);
+    this.elem.querySelector('.collapse-content-other').hidden = !this.elem.querySelector('.collapse-content-other').hidden;
+	}
+
+
+
+    ComplexCollapse.init();
+
+
+   
+
+
+
+</script>
