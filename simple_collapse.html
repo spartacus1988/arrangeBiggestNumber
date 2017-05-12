@@ -36,36 +36,20 @@
     obSimpleCollapse.init();
 
 
+    class ComplexCollapse extends SimpleCollapse {
 
-	var ComplexCollapse = new SimpleCollapse(".complex-collapse");
+    	toggleContent() {
+	        this.elem.querySelector('.collapse-content-other').hidden = !this.elem.querySelector('.collapse-content-other').hidden;
+	      }  
 
-	console.log(ComplexCollapse);
-
- //    var inheritsFrom = function (child, parent) {
- //    child.prototype = Object.create(parent.prototype);
-	// };
-
+    }
 
 
-	// class ComplexCollapse 
-	// {   
-	          
-	// }
+    var obComplexCollapse = new ComplexCollapse(".complex-collapse");  
 
-	//var ComplexCollapse = new SimpleCollapse(".complex-collapse");
-	//inheritsFrom(ComplexCollapse, SimpleCollapse);
+	console.log(obComplexCollapse);
 
-	ComplexCollapse.toggleContent = function() {
-    //SimpleCollapse.prototype.toggleContent.call(this);
-    this.elem.querySelector('.collapse-content-other').hidden = !this.elem.querySelector('.collapse-content-other').hidden;
-	}
-
-
-
-    ComplexCollapse.init();
-
-
-   
+	obComplexCollapse.init();
 
 
 
