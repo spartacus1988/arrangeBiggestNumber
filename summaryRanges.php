@@ -18,9 +18,9 @@ function My_summaryRanges($arr)
 
 	//sort($arr);
 
-	echo "sorted arr is: ";
-	print_r($arr);
-	echo "<br>";
+	//echo "sorted arr is: ";
+	//print_r($arr);
+	//echo "<br>";
 
 	while($counter--)
 	{
@@ -34,9 +34,9 @@ function My_summaryRanges($arr)
 
 		$selected_val = checkConcatTwoNumber($arr[$direct_counter], $arr[$next_counter_elem]);
 
-		echo "selected_val is: ";
-		print_r($selected_val);
-		echo "<br>";
+		//echo "selected_val is: ";
+		//print_r($selected_val);
+		//echo "<br>";
 		
 		if($selected_val)
 		{
