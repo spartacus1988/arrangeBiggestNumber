@@ -5,7 +5,7 @@
 
 <div class="complex-collapse">
     <a href="#complex-collapse" class="collapse-control">Control</a>
-    <div id='complex' class="collapse-content-other" hidden>Other Content</div>
+    <div id='complex' class="collapse-content-other" hidden style="display: none;">Other Content</div>
 </div>
 
 
@@ -36,20 +36,24 @@
 
     	toggleContent() {
 
-	        function hideme() { 
-	        	//this.elem.querySelector('.collapse-content-other').fadeIn(); 
-	        	//this.elem.querySelector('.collapse-content-other').fadeOut();
-	        	$("DIV#complex").fadeIn();
-	        	$("DIV#complex").fadeOut();
+	        function toggleme() 
+	        { 
+	        	var display = document.getElementById("complex").style.display;        
+
+	    		if(display=='none')
+	    		{	
+	       			$("DIV#complex").fadeIn();
+	    		}
+	    		else
+	    		{	 
+	       			$("DIV#complex").fadeOut();
+	       		}
 	    	}
-	    	hideme();
-	      }  
+	    	toggleme();
+	    }  
     }
 
 
     var obComplexCollapse = new ComplexCollapse(".complex-collapse");  
 	obComplexCollapse.init();
-
-
-
 </script>
